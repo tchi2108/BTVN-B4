@@ -1,39 +1,57 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Box, TextField, Button, Typography, Paper } from "@mui/material";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
     localStorage.setItem("isLogin", true);
     navigate("/dashboard");
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      height="100vh"
+      bgcolor="#f5f5f5"
+    >
+      <Paper elevation={3} sx={{ p: 4, width: 350 }}>
+        <Typography variant="h5" textAlign="center" mb={3}>
+          Login
+        </Typography>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
+        <TextField
+          fullWidth
+          label="Email"
+          margin="normal"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <input
+        <TextField
+          fullWidth
+          label="Password"
           type="password"
-          placeholder="Password"
+          margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+        <Button
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3 }}
+          onClick={handleLogin}
+        >
+          Login
+        </Button>
+      </Paper>
+    </Box>
   );
 };
 
