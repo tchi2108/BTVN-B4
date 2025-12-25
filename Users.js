@@ -1,18 +1,22 @@
+import { List, ListItem, ListItemText, Typography, Paper } from "@mui/material";
+
 const Users = () => {
-  const users = [
-    { id: 1, name: "Admin" },
-    { id: 2, name: "User A" },
-  ];
+  const users = ["Admin", "User A", "User B"];
 
   return (
-    <div>
-      <h3>Quản lý users</h3>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
+    <Paper sx={{ p: 3 }}>
+      <Typography variant="h6" mb={2}>
+        Quản lý users
+      </Typography>
+
+      <List>
+        {users.map((user, index) => (
+          <ListItem key={index} divider>
+            <ListItemText primary={user} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Paper>
   );
 };
 
