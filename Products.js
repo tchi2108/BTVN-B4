@@ -1,18 +1,22 @@
+import { List, ListItem, ListItemText, Typography, Paper } from "@mui/material";
+
 const Products = () => {
-  const products = [
-    { id: 1, name: "iPhone" },
-    { id: 2, name: "Laptop" },
-  ];
+  const products = ["iPhone", "Laptop", "Tablet"];
 
   return (
-    <div>
-      <h3>Quản lý sản phẩm</h3>
-      <ul>
-        {products.map((item) => (
-          <li key={item.id}>{item.name}</li>
+    <Paper sx={{ p: 3 }}>
+      <Typography variant="h6" mb={2}>
+        Quản lý sản phẩm
+      </Typography>
+
+      <List>
+        {products.map((item, index) => (
+          <ListItem key={index} divider>
+            <ListItemText primary={item} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Paper>
   );
 };
 
